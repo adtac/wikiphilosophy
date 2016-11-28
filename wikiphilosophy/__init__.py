@@ -9,7 +9,7 @@ from io import StringIO
 @contextlib.contextmanager
 def nostderr():
     save_stderr = sys.stderr
-    sys.stderr = StringIO.StringIO()
+    sys.stderr = StringIO()
     yield
     sys.stderr = save_stderr
 
