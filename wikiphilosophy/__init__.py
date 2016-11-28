@@ -4,7 +4,7 @@ import re
 import sys
 import contextlib
 import sys
-import cStringIO
+from io import StringIO
 
 @contextlib.contextmanager
 def nostderr():
