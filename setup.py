@@ -11,7 +11,7 @@ with open('README.md') as readme:
 
 if __name__ == '__main__':
     setup(name='wikiphilosophy',
-          version='0.1',
+          version='0.2',
           description='See how every wikipedia article leads to Philosophy',
           author='Adhityaa Chandrasekar',
           author_email='c.adhityaa@gmail.com',
