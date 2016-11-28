@@ -2,6 +2,16 @@ import wikipedia
 from bs4 import BeautifulSoup
 import re
 import sys
+import contextlib
+import sys
+import cStringIO
+
+@contextlib.contextmanager
+def nostderr():
+    save_stderr = sys.stderr
+    sys.stderr = cStringIO.StringIO()
+    yield
+    sys.stderr = save_stderr
 
 def next_link(cur, done):
     try:
@@ -11,7 +21,7 @@ def next_link(cur, done):
             if op not in done:
                 g = wikipedia.page(op).html()
                 break
-    soup = BeautifulSoup(re.sub(r'\([^)]*\)', '', g), "lxml")
+    soup = BeautifulSoup(re.sub(r'\([^)]*\)', '', g), "html.parser")
     for para in soup.findAll("p"):
         flag = False
         for link in para.findAll("a"):
@@ -30,7 +40,8 @@ def main():
         done.update([start])
         sys.stdout.write(start)
         sys.stdout.flush()
-        start = next_link(start, done)
+        with nostderr():
+            start = next_link(start, done)
         if start is None:
             print("\nNo more links")
             exit()
