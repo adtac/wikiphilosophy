@@ -19,22 +19,23 @@ def next_link(cur, done):
             if link.get("href").startswith("/wiki/") and link.get("title") not in done and link.contents[0].islower():
                 return link.get("title")
 
-if len(sys.argv) > 1:
-    start = sys.argv[1]
-else:
-    start = wikipedia.random()
-done = set()
+def main():
+    if len(sys.argv) > 1:
+        start = sys.argv[1]
+    else:
+        start = wikipedia.random()
+    done = set()
 
-while start != "Philosophy":
-    done.update([start])
-    sys.stdout.write(start)
-    sys.stdout.flush()
-    start = next_link(start, done)
-    if start is None:
-        print("\nNo more links")
-        exit()
-    sys.stdout.write(" -> ")
-    sys.stdout.flush()
+    while start != "Philosophy":
+        done.update([start])
+        sys.stdout.write(start)
+        sys.stdout.flush()
+        start = next_link(start, done)
+        if start is None:
+            print("\nNo more links")
+            exit()
+        sys.stdout.write(" -> ")
+        sys.stdout.flush()
 
-print(start)
-print("Length: " + str(len(done) + 1))
+    print(start)
+    print("Length: " + str(len(done) + 1))

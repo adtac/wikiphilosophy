@@ -1,0 +1,2 @@
+wikipedia==1.4.0
+beautifulsoup4==4.5.1
