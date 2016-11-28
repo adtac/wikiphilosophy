@@ -45,7 +45,7 @@ def main():
         if start is None:
             print("\nNo more links")
             exit()
-        sys.stdout.write(" -> ")
+        sys.stdout.write(" → ")
         sys.stdout.flush()
 
     print(start)
