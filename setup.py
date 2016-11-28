@@ -22,7 +22,7 @@ if __name__ == '__main__':
           install_requires=requirements,
           license='AGPL-3.0',
           long_description=long_description,
-          entry_points={'console_scripts': ['wikiphilosophy = wikiphilosophylib:main']},
+          entry_points={'console_scripts': ['wikiphilosophy = wikiphilosophy:main']},
           classifiers=[
               'Development Status :: 4 - Beta',
 
